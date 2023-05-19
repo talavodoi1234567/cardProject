@@ -1,5 +1,7 @@
+import traceback
+
 from flask import Flask, json, jsonify
-from dtb import db
+# from dtb import db
 
 app = Flask(__name__)
 
@@ -22,9 +24,9 @@ def testdtb():
         return jsonify({
             'connect': True
         })
-    except:
+     except Exception:
         return jsonify({
-            'connect': False
+            'connect': traceback.print_exc()
         })
 
 if __name__ == '__main__':
