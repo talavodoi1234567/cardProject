@@ -1,19 +1,22 @@
 from peewee import *
 
-db = MySQLDatabase('sql12617601', host='sql12.freesqldatabase.com', port=3306, user='sql12617601', password='WgNvzqpavt')
+db = PostgresqlDatabase(
+    'your_database_name',
+    user='dtb_name_user',
+    password='TYl0xeFfLoxdsn10HhA2qIcP9H65nGOR',
+    host='dpg-chjf1qrhp8u4bdv9gfh0-a',
+    port=5432
+)
 
-class Customer(Model):
-    ID = IntegerField()
-    Name = BlobField()
-    DoB = DateField()
-    monthly_ticket = DateField()
-    class Meta:
-        database = db
+# class Customer(Model):
+#     ID = IntegerField()
+#     Name = BlobField()
+#     DoB = DateField()
+#     monthly_ticket = DateField()
+#     class Meta:
+#         database = db
 
 
 if __name__ == '__main__':
-    try:
-        db.connect()
-        print('Connected to database')
-    except:
-        print('Failed to connect to database')
+    db.connect()
+    print('Connected to database')
