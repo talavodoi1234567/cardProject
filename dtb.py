@@ -1,7 +1,7 @@
 from peewee import *
 
 db = PostgresqlDatabase(
-    'your_database_name',
+    'dtb_name',
     user='dtb_name_user',
     password='TYl0xeFfLoxdsn10HhA2qIcP9H65nGOR',
     host='dpg-chjf1qrhp8u4bdv9gfh0-a',
