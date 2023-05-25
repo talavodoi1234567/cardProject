@@ -73,7 +73,7 @@ def edit_user():
     balance = data.get('Balance')
     exp_date_card = data.get('Exp_date_card')
     types_of_ticket = data.get('Types_of_ticket')
-    edit_user(id, name, cmnd, gender, picture, dob, exp_date_ticket, balance, exp_date_card, types_of_ticket)
+    update_user(id, name, cmnd, gender, picture, dob, exp_date_ticket, balance, exp_date_card, types_of_ticket)
     return jsonify({
         'message': True
     })

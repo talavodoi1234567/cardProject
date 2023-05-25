@@ -50,7 +50,7 @@ def add_user(name, cmnd, gender, picture, dob, exp_date_ticket, balance, exp_dat
     record.save()
 
 
-def edit_user(id, name, cmnd, gender, picture, dob, exp_date_ticket, balance, exp_date_card, types_of_ticket):
+def update_user(id, name, cmnd, gender, picture, dob, exp_date_ticket, balance, exp_date_card, types_of_ticket):
     record = NoEncryptedCustomer.get_by_id(id)
     record.Name = name
     record.CMND = cmnd
