@@ -39,11 +39,7 @@ def testdtb():
 #check thẻ đã được cắm vào hay chưa
 #deploy chưa có thẻ nên làm tạm
 def check_card():
-    return jsonify({
-        'connect': True,
-        'data': jsonify(select_user(1))
-    })
-
+    return jsonify(select_user(1))
 
 @app.route('/create_card', methods=['POST'])
 # tạo thẻ
