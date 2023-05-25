@@ -2,7 +2,7 @@ BTrees==5.0
 cffi==1.15.1
 click
 colorama
-Flask
+Flask~=2.2.2
 gunicorn==20.1.0
 itsdangerous
 Jinja2
