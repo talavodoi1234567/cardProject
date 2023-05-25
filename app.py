@@ -48,63 +48,48 @@ def check_card():
 @app.route('/create_card', methods=['POST'])
 # tạo thẻ
 def create_card():
-    try:
-        data = request.get_json()
-        name = data.get('Name')
-        cmnd = data.get('CMND')
-        gender = data.get('Gender')
-        picture = data.get('Picture')
-        dob = data.get('DoB')
-        exp_date_ticket = data.get('Exp_date_ticket')
-        balance = data.get('Balance')
-        exp_date_card = data.get('Exp_date_card')
-        types_of_ticket = data.get('Types_of_ticket')
-        add_user(name, cmnd, gender, picture, dob, exp_date_ticket, balance, exp_date_card, types_of_ticket)
-        return jsonify({
-            'message': True
-        })
-    except Exception:
-        return jsonify({
-            'message': False
-        })
+    data = request.get_json()
+    name = data.get('Name')
+    cmnd = data.get('CMND')
+    gender = data.get('Gender')
+    picture = data.get('Picture')
+    dob = data.get('DoB')
+    exp_date_ticket = data.get('Exp_date_ticket')
+    balance = data.get('Balance')
+    exp_date_card = data.get('Exp_date_card')
+    types_of_ticket = data.get('Types_of_ticket')
+    add_user(name, cmnd, gender, picture, dob, exp_date_ticket, balance, exp_date_card, types_of_ticket)
+    return jsonify({
+        'message': True
+    })
 
 
 @app.route('/edit_card', methods=['POST'])
 def edit_user():
-    try:
-        id = request.args.get('ID')
-        data = request.get_json()
-        name = data.get('Name')
-        cmnd = data.get('CMND')
-        gender = data.get('Gender')
-        picture = data.get('Picture')
-        dob = data.get('DoB')
-        exp_date_ticket = data.get('Exp_date_ticket')
-        balance = data.get('Balance')
-        exp_date_card = data.get('Exp_date_card')
-        types_of_ticket = data.get('Types_of_ticket')
-        edit_user(id, name, cmnd, gender, picture, dob, exp_date_ticket, balance, exp_date_card, types_of_ticket)
-        return jsonify({
-            'message': True
-        })
-    except Exception:
-        return jsonify({
-            'message': False
-        })
+    id = request.args.get('ID')
+    data = request.get_json()
+    name = data.get('Name')
+    cmnd = data.get('CMND')
+    gender = data.get('Gender')
+    picture = data.get('Picture')
+    dob = data.get('DoB')
+    exp_date_ticket = data.get('Exp_date_ticket')
+    balance = data.get('Balance')
+    exp_date_card = data.get('Exp_date_card')
+    types_of_ticket = data.get('Types_of_ticket')
+    edit_user(id, name, cmnd, gender, picture, dob, exp_date_ticket, balance, exp_date_card, types_of_ticket)
+    return jsonify({
+        'message': True
+    })
 
 
 @app.route('/delete_card', methods=['POST'])
 def delete_card():
-    try:
-        id = request.args.get('ID')
-        delete_user(id)
-        return jsonify({
-            'message': True
-        })
-    except Exception:
-        return jsonify({
-            'message': True
-        })
+    id = request.args.get('ID')
+    delete_user(id)
+    return jsonify({
+        'message': True
+    })
 
 
 if __name__ == '__main__':
