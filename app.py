@@ -41,7 +41,7 @@ def check_card():
     try:
         return jsonify({
             'status': 'OK',
-            'data': select_user(1)
+            'data': get_random_record()
         })
     except Exception as e:
         return jsonify({
