@@ -39,53 +39,80 @@ def testdtb():
 #check thẻ đã được cắm vào hay chưa
 #deploy chưa có thẻ nên làm tạm
 def check_card():
-    return jsonify(select_user(1))
+    try:
+        return jsonify({
+            'status': 'OK',
+            'data': select_user(1)
+        })
+    except Exception as e:
+        return jsonify({
+            'status': 'failed to check',
+            'error': e.__str__()
+        })
 
 @app.route('/create_card', methods=['POST'])
 # tạo thẻ
 def create_card():
-    data = request.get_json()
-    name = data.get('Name')
-    cmnd = data.get('CMND')
-    gender = data.get('Gender')
-    picture = data.get('Picture')
-    dob = data.get('DoB')
-    exp_date_ticket = data.get('Exp_date_ticket')
-    balance = data.get('Balance')
-    exp_date_card = data.get('Exp_date_card')
-    types_of_ticket = data.get('Types_of_ticket')
-    add_user(name, cmnd, gender, picture, dob, exp_date_ticket, balance, exp_date_card, types_of_ticket)
-    return jsonify({
-        'message': True
-    })
+    try:
+        data = request.get_json()
+        name = data.get('Name')
+        cmnd = data.get('CMND')
+        gender = data.get('Gender')
+        picture = data.get('Picture')
+        dob = data.get('DoB')
+        exp_date_ticket = data.get('Exp_date_ticket')
+        balance = data.get('Balance')
+        exp_date_card = data.get('Exp_date_card')
+        types_of_ticket = data.get('Types_of_ticket')
+        add_user(name, cmnd, gender, picture, dob, exp_date_ticket, balance, exp_date_card, types_of_ticket)
+        return jsonify({
+            'status': 'OK'
+        })
+    except Exception as e:
+        return jsonify({
+            'status': 'failed to create',
+            'error': e.__str__()
+        })
 
 
 @app.route('/edit_card', methods=['POST'])
 def edit_user():
-    id = request.args.get('ID')
-    data = request.get_json()
-    name = data.get('Name')
-    cmnd = data.get('CMND')
-    gender = data.get('Gender')
-    picture = data.get('Picture')
-    dob = data.get('DoB')
-    exp_date_ticket = data.get('Exp_date_ticket')
-    balance = data.get('Balance')
-    exp_date_card = data.get('Exp_date_card')
-    types_of_ticket = data.get('Types_of_ticket')
-    update_user(id, name, cmnd, gender, picture, dob, exp_date_ticket, balance, exp_date_card, types_of_ticket)
-    return jsonify({
-        'message': True
-    })
+    try:
+        id = request.args.get('ID')
+        data = request.get_json()
+        name = data.get('Name')
+        cmnd = data.get('CMND')
+        gender = data.get('Gender')
+        picture = data.get('Picture')
+        dob = data.get('DoB')
+        exp_date_ticket = data.get('Exp_date_ticket')
+        balance = data.get('Balance')
+        exp_date_card = data.get('Exp_date_card')
+        types_of_ticket = data.get('Types_of_ticket')
+        update_user(id, name, cmnd, gender, picture, dob, exp_date_ticket, balance, exp_date_card, types_of_ticket)
+        return jsonify({
+            'status': 'OK'
+        })
+    except Exception as e:
+        return jsonify({
+            'status': 'failed to edit',
+            'error': e.__str__()
+        })
 
 
 @app.route('/delete_card', methods=['POST'])
 def delete_card():
-    id = request.args.get('ID')
-    delete_user(id)
-    return jsonify({
-        'message': True
-    })
+    try:
+        id = request.args.get('ID')
+        delete_user(id)
+        return jsonify({
+            'message': True
+        })
+    except Exception as e:
+        return jsonify({
+            'status': 'failed to delete',
+            'error': e.__str__()
+        })
 
 
 if __name__ == '__main__':
