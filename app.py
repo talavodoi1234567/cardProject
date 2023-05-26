@@ -106,7 +106,7 @@ def delete_card():
         id = request.args.get('ID')
         delete_user(id)
         return jsonify({
-            'message': True
+            'status': 'OK'
         })
     except Exception as e:
         return jsonify({
