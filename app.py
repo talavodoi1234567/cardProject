@@ -1,5 +1,4 @@
 from datetime import date
-
 from flask import Flask, jsonify, request
 from dtb import *
 

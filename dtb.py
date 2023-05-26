@@ -1,4 +1,5 @@
 from peewee import *
+import random
 # from AES_cryption import data_decrypt, data_encrypt
 
 db = PostgresqlDatabase(
@@ -43,6 +44,23 @@ def select_user(id):
         'Exp_date_card': customer['Exp_date_card'],
         'Types_of_ticket': customer['Types_of_ticket']
     }
+
+
+def get_random_record():
+    # Lấy tất cả các ID từ bảng
+    all_ids = [record.ID for record in NoEncryptedCustomer.select()]
+
+    # Lấy ngẫu nhiên một ID từ danh sách các ID
+    random_id = random.choice(all_ids)
+
+    # Sử dụng hàm select_record(id) để lấy bản ghi theo ID
+    random_record = select_user(random_id)
+
+    # Kiểm tra kết quả
+    if random_record:
+        return random_record
+    else:
+        raise Exception("Don't have any record in the database")
 
 
 def add_user(name, cmnd, gender, picture, dob, exp_date_ticket, balance, exp_date_card, types_of_ticket):
