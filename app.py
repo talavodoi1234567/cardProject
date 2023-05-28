@@ -1,9 +1,10 @@
 from datetime import date
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 from dtb import *
 
 app = Flask(__name__)
-
+CORS(app)
 
 def default(obj):
     if isinstance(obj, date):
@@ -110,6 +111,36 @@ def delete_card():
     except Exception as e:
         return jsonify({
             'status': 'failed to delete',
+            'error': e.__str__()
+        })
+
+
+@app.route('/lock_card', methods=['POST'])
+def lock_card():
+    try:
+        id = request.args.get('ID')
+        lock_user(id)
+        return jsonify({
+            'status': 'OK'
+        })
+    except Exception as e:
+        return jsonify({
+            'status': 'failed to lock',
+            'error': e.__str__()
+        })
+
+
+@app.route('/unlock_card', methods=['POST'])
+def unlock_card():
+    try:
+        id = request.args.get('ID')
+        unlock_user(id)
+        return jsonify({
+            'status': 'OK'
+        })
+    except Exception as e:
+        return jsonify({
+            'status': 'failed to unlock',
             'error': e.__str__()
         })
 
