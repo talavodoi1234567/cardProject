@@ -20,3 +20,4 @@ ZConfig==4.0
 ZODB==5.8.0
 zodbpickle==3.0.1
 zope.interface==6.0
+Flask-Cors==3.0.10
