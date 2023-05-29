@@ -153,11 +153,11 @@ def check_pin():
     pin_code = data.get('pin_code')
     if pin_code == '123456': # mã pin mặc định = 123456
         return jsonify({
-
+            'connect': True
         })
     else:
         return jsonify({
-
+            'connect': False
         })
 
 
