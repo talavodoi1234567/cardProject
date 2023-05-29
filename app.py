@@ -6,6 +6,7 @@ from dtb import *
 app = Flask(__name__)
 CORS(app)
 
+
 def default(obj):
     if isinstance(obj, date):
         return obj.strftime('%d-%m-%Y')
@@ -142,6 +143,21 @@ def unlock_card():
         return jsonify({
             'status': 'failed to unlock',
             'error': e.__str__()
+        })
+
+
+@app.route('/check_pin', methods=['POST'])
+def check_pin():
+    id = request.args.get('ID')
+    data = request.get_json()
+    pin_code = data.get('pin_code')
+    if pin_code == '123456': # mã pin mặc định = 123456
+        return jsonify({
+
+        })
+    else:
+        return jsonify({
+
         })
 
 

@@ -110,6 +110,7 @@ def unlock_user(id):
         raise Exception('User is not locked')
     else:
         record.Is_locked = False
+        record.save()
 
 
 if __name__ == '__main__':
