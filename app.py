@@ -152,7 +152,8 @@ def check_pin():
     pin_code = data.get('pin_code')
     if pin_code == '123456': # mã pin mặc định = 123456
         return jsonify({
-            'connect': True
+            'connect': True,
+            'data': get_random_record() # chưa có thẻ nên trả về một bản ghi bất kỳ
         })
     else:
         return jsonify({
