@@ -148,7 +148,6 @@ def unlock_card():
 
 @app.route('/check_pin', methods=['POST'])
 def check_pin():
-    id = request.args.get('ID')
     data = request.get_json()
     pin_code = data.get('pin_code')
     if pin_code == '123456': # mã pin mặc định = 123456
