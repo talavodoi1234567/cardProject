@@ -51,6 +51,22 @@ def check_card():
             'error': e.__str__()
         })
 
+
+@app.route('/get_by_id')
+def get_by_id():
+    try:
+        id = request.args.get('ID')
+        return jsonify({
+            'status': 'OK',
+            'data': select_user(id)
+        })
+    except Exception as e:
+        return jsonify({
+            'status': 'failed to check',
+            'error': e.__str__()
+        })
+
+
 @app.route('/create_card', methods=['POST'])
 # tạo thẻ
 def create_card():
