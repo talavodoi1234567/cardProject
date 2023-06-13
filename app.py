@@ -161,5 +161,14 @@ def check_pin():
         })
 
 
+@app.route('/send_apdu')
+def send_apdu():
+    return jsonify({
+        'data': 'AA BB CC DD EE FF',
+        'sw1': '90',
+        'sw2': '00'
+    })
+
+
 if __name__ == '__main__':
     app.run()
