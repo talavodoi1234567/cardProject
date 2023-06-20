@@ -28,7 +28,6 @@ if __name__ == '__main__':
     key = 'this is the key'
 
     data = 'this is the data'
-    # cipher = AES.new(key, AES.MODE_CBC, iv)  # táº¡o Äá»i tÆ°á»£ng cipher
 
     encrypted_data = data_encrypt(key, data)
 

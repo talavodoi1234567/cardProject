@@ -186,5 +186,20 @@ def send_apdu():
     })
 
 
+@app.route('/change_pin', methods=['POST'])
+def change_pin():
+    data = request.get_json()
+    id = data.get('ID')
+    pin = data.get('new_pin')
+    if pin != '123456':
+        return jsonify({
+            'status': True
+        })
+    else:
+        return jsonify({
+            'status': False
+    })
+
+
 if __name__ == '__main__':
     app.run()
