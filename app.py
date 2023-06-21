@@ -190,15 +190,23 @@ def send_apdu():
 def change_pin():
     data = request.get_json()
     id = data.get('ID')
-    pin = data.get('new_pin')
-    if pin != '123456':
+    old_pin = data.get('old_pin')
+    new_pin = data.get('new_pin')
+    if old_pin != '123456':
         return jsonify({
-            'status': True
-        })
+            'status': False,
+            'message': 'wrong pin code'
+       })
     else:
-        return jsonify({
-            'status': False
-    })
+        if new_pin == '123456':
+            return jsonify({
+                'status': False,
+                'message': 'new pin = old pin'
+            })
+        else:
+            return jsonify({
+                'status': True
+            })
 
 
 if __name__ == '__main__':
