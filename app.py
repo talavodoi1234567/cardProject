@@ -198,7 +198,7 @@ def change_pin():
             'message': 'wrong pin code'
        })
     else:
-        if new_pin == '123456':
+        if new_pin == old_pin:
             return jsonify({
                 'status': False,
                 'message': 'new pin = old pin'
